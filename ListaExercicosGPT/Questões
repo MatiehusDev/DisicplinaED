@@ -1,0 +1,58 @@
+📘 Lista de Exercícios – Estruturas Dinâmicas, Strings e Matrizes
+## Parte 1 – Strings e Ponteiros
+
+1. Escreva um programa que leia n palavras e determine qual delas é lexicograficamente maior.
+
+2. Crie uma função int conta_vogais(char* s) que retorna quantas vogais existem em uma string.
+
+3. Implemente uma função char* remove_char(char* s, char c) que retorna uma nova string sem todas as ocorrências do caractere c.
+
+4. Escreva uma função void substitui_char(char* s, char antigo, char novo) que substitui todas as ocorrências de antigo por novo.
+
+5. Desenvolva uma função char* junta_strings(char* s1, char* s2) que retorna uma nova string contendo a concatenação de s1 e s2.
+
+6. Implemente uma função int anagramas(char* s1, char* s2) que retorna 1 se as duas strings forem anagramas (contêm as mesmas letras em qualquer ordem), e 0 caso contrário.
+
+7. Crie uma função void imprime_reverso(char* v[], int n) que imprime as strings de um vetor em ordem inversa.
+
+8. Escreva uma função int ocorrencias_string(char* v[], int n, char* alvo) que retorna quantas vezes alvo aparece no vetor.
+
+## Parte 2 – Vetores Dinâmicos
+
+9. Crie um programa que leia n inteiros, armazene em um vetor dinâmico e crie outro vetor apenas com os números pares.
+
+10. Implemente uma função int* vetor_uniao(int* A, int n1, int* B, int n2, int* n_res) que retorna um novo vetor com a união dos elementos de A e B (sem repetir elementos).
+
+11. Faça uma função int* vetor_interseccao(int* A, int n1, int* B, int n2, int* n_res) que retorna um novo vetor com a interseção de A e B.
+
+12. Desenvolva um programa que leia um vetor de n inteiros e crie um novo vetor sem elementos repetidos.
+
+13. Implemente uma função void rotaciona_vetor(int* v, int n, int k) que rotaciona os elementos de um vetor k posições à direita.
+
+14. Escreva uma função int soma_intervalo(int* v, int n, int inicio, int fim) que retorna a soma dos elementos entre as posições inicio e fim.
+
+## Parte 3 – Matrizes Dinâmicas
+
+15. Crie uma função float** matriz_identidade(int n) que retorna uma matriz identidade n x n.
+
+16. Escreva uma função float** matriz_clone(float** mat, int linhas, int colunas) que cria uma cópia de uma matriz.
+
+17. Desenvolva uma função float matriz_determinante(float** mat, int n) que calcula o determinante de uma matriz quadrada (use método recursivo ou de Laplace).
+
+18. Implemente uma função float** matriz_subtrai(float** A, float** B, int linhas, int colunas) que retorna a matriz diferença A - B.
+
+19. Faça uma função int matriz_diagonal_dominante(float** A, int n) que retorna 1 se a matriz for diagonalmente dominante, e 0 caso contrário.
+
+20. Escreva uma função float** matriz_randomica(int linhas, int colunas, int min, int max) que cria uma matriz preenchida com números inteiros aleatórios no intervalo [min, max].
+
+## Parte 4 – Desafios Extras
+
+21. Crie uma função int* frequencia_caracteres(char* s) que retorna um vetor de tamanho 256 indicando a frequência de cada caractere da string.
+
+22. Escreva um programa que leia um texto e determine a palavra mais longa nele.
+
+23. Implemente uma função char* mescla_strings(char* s1, char* s2) que intercala os caracteres de s1 e s2, mas sempre começando pela maior string.
+
+24. Crie uma função int eh_substring(char* texto, char* padrao) que retorna 1 se padrao ocorre dentro de texto.
+
+25. Escreva uma função char** separa_palavras(char* s, int* qtd) que recebe uma string e retorna um vetor dinâmico contendo todas as palavras separadas por espaço.
