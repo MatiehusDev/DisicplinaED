@@ -7,9 +7,10 @@ Pilha* pilha_cria(void){
     Pilha* p = (Pilha*)malloc(sizeof(Pilha));
     p->topo = NULL;
     return p;
-} 
+}
 void pilha_push(Pilha* p, char* link){
     Lista* novo = (Lista*)malloc(sizeof(Lista));
+    novo->link = (char*)malloc((strlen(link)+1) * sizeof(char));
     strcpy(novo->link, link);
 
     novo->prox = p->topo;
@@ -17,22 +18,24 @@ void pilha_push(Pilha* p, char* link){
 }
 char* pilha_pop(Pilha* p){
     if(pilha_vazia(p)) return NULL;
-    
-    Lista* i = p->topo;
-    char* pop = i->link;    
 
-    p->topo = i->prox;
-    free(i);
-    
-    return pop;
+    Lista* topoAtual = p->topo;
+    char* linkPop = topoAtual->link;
+
+    p->topo = topoAtual->prox;
+    free(topoAtual);
+    return linkPop;
 }
-char* pilha_topo(Pilha* p);
+char* pilha_topo(Pilha* p){
+    if(pilha_vazia(p))
+        return NULL;
+    return p->topo->link;
+}
 int pilha_vazia(Pilha* p){
     return p->topo == NULL;
 }
 void pilha_libera(Pilha* p){
     Lista* i = p->topo;
-
     while(i != NULL){
         Lista* temp = i;
         i = i->prox;
@@ -43,25 +46,36 @@ void pilha_libera(Pilha* p){
 void pilha_imprime(Pilha* p);
 
 // Conta ocorrências de um link
-int pilha_conta_links(Pilha* p, char* link);
+int pilha_conta_links(Pilha* p, char* link){
+    int qtdLink = 0;
+    Lista* i = p->topo;
+
+    while(i != NULL){
+        if(strcmp(i->link, link) == 0)
+            qtdLink++;
+        i = i->prox;
+    }
+    return qtdLink;
+}
 // Filtra todos os links de um determinado domínio
 Pilha* pilha_filtra_dominio(Pilha* p, char* dominio){
-    if(pilha_vazia(p)) return NULL;
+    if(p->topo == NULL || dominio == NULL) return NULL;
     
+    Pilha* novo = pilha_cria();
     Lista* i = p->topo;
-    Pilha* filtrados = pilha_cria();
 
     while(i != NULL){
         if(strstr(i->link, dominio) != NULL)
-            pilha_push(filtrados, i->link);
+            pilha_push(novo, i->link);
         i = i->prox;
     }
-        if(pilha_vazia(filtrados)){
-            pilha_libera(filtrados);
-            return NULL;
-        }
-        
-    return filtrados;
+
+    if(pilha_vazia(novo)){
+        pilha_libera(novo);
+        return NULL;
+    }
+    
+    return novo;
 }
 
 // Função: Verifica se um link existe na pilha
